@@ -1,4 +1,8 @@
 {
+  "sidebar": {
+    "home": "홈",
+    "calendar": "캘린더"
+  },
   "home": {
     "title": "홈"
   }
