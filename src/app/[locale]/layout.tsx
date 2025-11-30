@@ -8,6 +8,10 @@ import { routing } from "@/lib/i18n/routing";
 import type { Metadata } from "next";
 import { hasLocale, Locale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import MainLayoutHeader from "./header";
+import MainLayoutSidebar from "./sidebar";
+
+import "@/app/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,7 +46,15 @@ export default function LocaleLayout(props: Readonly<LocaleLayoutProps>) {
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <div className="flex flex-col h-screen">
+            <MainLayoutHeader />
+            <div className="flex flex-1">
+              <MainLayoutSidebar />
+              <main className="flex-1 h-full bg-red-500">{children}</main>
+            </div>
+          </div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
